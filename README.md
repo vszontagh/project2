@@ -14,10 +14,10 @@ project2 :octocat: :thought_balloon:
 * User can see a mobile optimized version of the forum when he is visiting on the go
 
 ##BONUS FEATURES
-:heavy_plus_sign: User can comment on previous comments
-:heavy_plus_sign: User can post their current locations
-:heavy_plus_sign: User can format the content of the comment
-:heavy_plus_sign: User can add url for a picture as an avatar, or can slelect from basic avatars
+ :heavy_plus_sign: User can comment on previous comments
+ :heavy_plus_sign: User can post their current locations
+ :heavy_plus_sign: User can format the content of the comment
+ :heavy_plus_sign: User can add url for a picture as an avatar, or can slelect from basic avatars
 
 
 ##FRONT-END WIREFRAMES
