@@ -22,24 +22,24 @@ project2 :octocat: :thought_balloon:
 
 ##FRONT-END WIREFRAMES
 **Web page layout**
-![ERD](image/web.png)
+![web](image/web.png)
 
 **Mobile Layout**
-![ERD](image/mobile.png)
+![mobile](image/mobile.png)
 
 
 ##PSEUDOCODE :bar_chart:
-
+![pseudo](image/code.png)
 
 ##ROUTES
 
-/forum
+*/forum
 
-/forum
+*/forum
 
-/forum/:id
+*/forum/:id
 
-/forum/:id/delete
+*/forum/:id/delete
 
 
 ##ERD DATABASE DESIGN
