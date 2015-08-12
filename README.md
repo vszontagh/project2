@@ -1,4 +1,4 @@
-:thought_balloon:project2 :octocat:
+project2 :octocat: :thought_balloon:
 #FORUM
 
 
@@ -28,7 +28,7 @@
 ![ERD](image/mobile.png)
 
 
-##PSEUDOCODE :bar_chart
+##PSEUDOCODE :bar_chart:
 
 
 ##ROUTES
@@ -55,5 +55,5 @@
 :smiley:CSS
 :smiley:Express
 
-## DIGITAL OCEAN :droplet:
-[GitHub](http://github.com)
+## DIGITAL OCEAN
+[DO :droplet:](http://github.com)
