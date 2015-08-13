@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Topic</title>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <%- include header.ejs %>
+    <div>
+    <h1></h1>
+  </div>
+  <div>
+   <form action='/jungle/forum/:id/new/topic' method='POST'>
+      <label for='topic' name='topic' value='Topic:'>
+        <input type='text' id='topic' name='topic' placeholder='Enter topic'>
+      </label><br>
+      <select>
+        <% table.forEach(function(cat) { %>
+        <option name="<%=cat.c_id%>" value="<%=cat.c_id%>"><%=cat.name%></option>
+        <% }) %>
+      </select>
+
+
+      <input value='<%= categories.c_id%>'>
+      <input type='hidden' name='catid' value='<%=categories.c_id%>'><br>
+      
+      <button>Add post</button>
+    </form>
+  </div>
+
+</body>
+</html>

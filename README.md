@@ -1,5 +1,5 @@
 project2 :octocat: :thought_balloon:
-#FORUM
+#Study Buddy FORUM
 
 
 ##USER STORIES

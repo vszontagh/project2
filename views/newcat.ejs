@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>New Category</title>
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+  <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <%- include header.ejs %>
+  <div>
+    <h1></h1>
+  </div>
+  <div>
+   <form action='/jungle/forum/new/category' method='POST'>
+      <label for='newcat' name='newcat' value='New Category:'>
+      <input type='text' id='newcat' name='newcat' placeholder='Enter new category'></label><br>
+      <button>Add Category</button>
+    </form>
+  </div>
+</body>
+</html>
