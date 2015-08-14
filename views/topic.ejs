@@ -9,5 +9,11 @@
 </head>
 <body>
   <%- include header.ejs %>
+    <div class="pure-u-2-6">
+
+  <% table.forEach(function(top) { %>
+      <a href="/jungle/topic/<%=top.t_id%>/posts"><h3>Topic: <%= top.topic%></h3></a><br>
+    </div>
+  <% }) %>
 </body>
 </html>

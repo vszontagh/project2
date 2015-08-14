@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Categories</title>
+  <title>Topics</title>
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,9 +9,11 @@
 </head>
 <body>
   <%- include header.ejs %>
-  <% table.forEach(function(cat) { %>
-    <h3><a href='/jungle/<%=cat.c_id%>/topic'><%=cat.c_id%>.<%=cat.name%></a></h3>
+    <div class="pure-u-2-6">
+  <% table.forEach(function(post) { %>
+      <a href=""></a>Post: <%= post.post%></h3></a><br>
+    </div>
   <% }) %>
-
+  <a href="/jungle/topic/<%=top.t_id%>/posts/new"><button>New Post</button></a>
 </body>
 </html>

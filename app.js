@@ -30,12 +30,15 @@ app.get('/jungle/login', function (req, res){
   res.render('login.ejs');
 });
 // create new user / login
+var name='';
 app.post('/jungle/login', function (req, res){
   db.run('INSERT INTO users(username, password, avatar, admin) VALUES(?,?,?,?)', req.body.username, req.body.password, req.body.avatar,'no', function (err){
     if (err){
       throw err;
     } else {
       //console.log(req.body.username);
+      name=req.body.username;
+      console.log(name);
       res.redirect('/jungle/forum');
     }
   });
@@ -43,7 +46,9 @@ app.post('/jungle/login', function (req, res){
 
 app.get('/jungle/forum', function (req, res){
   //console.log('im in')
-  db.all("SELECT topics.topic,categories.name, posts.post FROM categories, posts, topics WHERE topics.cat_id=categories.c_id AND topics.t_id=posts.t_id ORDER BY topics.vote ", function (err, row){
+  db.all("SELECT topics.topic,categories.name, posts.post, categories.c_id FROM categories, posts, topics WHERE topics.cat_id=categories.c_id AND topics.t_id=posts.t_id ORDER BY topics.vote ", function (err, row){
+    console.log(row);
+     console.log(name);
     if (err){
       throw err;
     } else {
@@ -52,6 +57,17 @@ app.get('/jungle/forum', function (req, res){
     }
   });
   //res.render('index.ejs');
+});
+
+app.post('/jungle/forum', function (req, res){
+  db.all("SELECT * FROM categories INNER JOIN topics ON topics.cat_id=categories.c_id ORDER BY topics.vote ", function (err, row){
+    if (err){
+      throw err;
+    } else {
+      console.log(row);
+      res.render('index.ejs', {categories: row, topics:row});
+    }
+  });
 });
 
 // create new category
@@ -68,38 +84,58 @@ app.post('/jungle/forum/new/category', function (req, res){
 });
 // create new category
 app.get('/jungle/forum/:id/new/topic', function (req, res){
-  res.render('newtopic.ejs');
-
-});
-//add new category to db
-app.post('/jungle/forum/:id/new/topic', function (req, res){
-  console.log('topic');
-  db.all('SELECT categories.c_id, categories.name FROM topics, categories WHERE topics.cat_id=categories.c_id ORDER BY topics.vote', function (req, res){
+  //res.render('newtopic.ejs');
+  db.all('SELECT categories.c_id, categories.name FROM categories, topics WHERE categories.c_id=topics.cat_id ORDER BY topics.vote', function (err, row){
     if (err){
       throw err;
     } else {
       console.log(row);
-      res.render('newtopic.ejs', {table: row});
-
-      db.run('INSERT INTO topics(topic, cat_id) VALUES(?,?)', req.body.newtop,req.params.c_id, function (err){
+      res.render('newtopic.ejs', {table: row}); // the object of the render
+    }
+  });
+});
+//add new topic
+app.post('/jungle/forum/:id/new/topic', function (req, res){
+  //console.log('topic');
+      db.run('INSERT INTO topics(u_id, topic, vote, cat_id) VALUES(?,?,?,?)',name, req.body.topic,0,req.params.id, function (err){
+        console.log(name);
+        console.log(req.params.id);
+        console.log(req.body.topic);
       if (err){
         throw err;
       }
       });
-    }
-    res.redirect('/jungle/forum');
-  });
+      res.redirect('/jungle/forum');
 });
 
+app.get('/jungle/about', function(req, res){
+  res.render('about.ejs');
+});
+
+// when adding a new post
+// have them login every time they post - if else statement
+
+// show route to spec id 
+// hinrid of index rout and show route , use req.param to get the cat. id and render all topic  which mathing with it
 
 
-app.post('/jungle/forum', function (req, res){
-  db.all("SELECT * FROM categories INNER JOIN topics ON topics.cat_id=categories.c_id ORDER BY topics.vote ", function (err, row){
+app.get('/jungle/forum/topic', function (req, res){
+  db.all("SELECT * FROM topics ORDER BY topics.vote", function (err, row){
     if (err){
       throw err;
     } else {
       console.log(row);
-      res.render('index.ejs', {categories: row, topics:row});
+      res.render('topic.ejs', {table: row});
+    }
+  });
+});
+app.get('/jungle/categories', function(req, res){
+   db.all("SELECT * FROM categories", function (err, row){
+    if (err){
+      throw err;
+    } else {
+      console.log(row);
+      res.render('categories.ejs', {table: row});
     }
   });
 });

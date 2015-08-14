@@ -113,16 +113,24 @@ app.get('/jungle/topic/:id/posts', function (req, res){
   });
 });
 
-//add new post
-app.get('/jungle/topic/:id/posts', function (req, res){
+app.get('/jungle/topic/:id/posts/new', function (req, res){
   db.all("SELECT posts.t_id, posts.post FROM posts WHERE posts.t_id=?",req.params.id, function (err, row){
     if (err){
       throw err;
-    } else {
-      console.log(row);
-      res.render('posts.ejs', {table: row});
     }
   });
+  res.render('posts.ejs', {table: row});
+});
+
+//add new post
+app.post('/jungle/topic/:id/posts/new', function (req, res){
+      //console.log(row);
+   db.run('INSERT INTO posts(t_id, post) VALUES (?,?)', req.params.t_id, req.body.post, function (err){
+      if (err){
+        throw err;
+      }
+   });
+   res.redirect('/jungle/topic/:id/posts');
 });
 
 
