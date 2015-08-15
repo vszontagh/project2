@@ -36,6 +36,7 @@ app.post('/jungle/login', function (req, res){
     if (err){
       throw err;
     } else {
+      user = this.lastID; // store last user id
       res.redirect('/jungle/categories');
     }
   });
@@ -43,7 +44,7 @@ app.post('/jungle/login', function (req, res){
 
 app.get('/jungle/forum', function (req, res){
   //console.log('im in')
-  db.all("SELECT categories.name FROM categories, topics ORDER BY topics.vote ", function (err, row){
+  db.all("SELECT categories.name FROM categories, topics ORDER BY topics.vote DESC", function (err, row){
     // console.log(row);
     //  console.log(name);
     if (err){
@@ -53,7 +54,7 @@ app.get('/jungle/forum', function (req, res){
       res.render('index.ejs', {table: row}); // table is the temporary storage of the new joined table
     }
   });
-    db.all("SELECT topics.topic FROM topics ORDER BY topics.vote ", function (err, row){
+    db.all("SELECT topics.topic FROM topics ORDER BY topics.vote DESC", function (err, row){
     // console.log(row);
     //  console.log(name);
     if (err){
@@ -66,7 +67,7 @@ app.get('/jungle/forum', function (req, res){
 });
 
 app.post('/jungle/forum', function (req, res){
-  db.all("SELECT * FROM categories INNER JOIN topics ON topics.cat_id=categories.c_id ORDER BY topics.vote ", function (err, row){
+  db.all("SELECT * FROM categories INNER JOIN topics ON topics.cat_id=categories.c_id ORDER BY topics.vote DESC", function (err, row){
     if (err){
       throw err;
     } else {
@@ -87,10 +88,76 @@ app.get('/jungle/categories', function(req, res){
     }
   });
 });
+
+// add new category
+app.post('/jungle/categories', function(req, res){
+  db.run('INSERT INTO categories(name) VALUES(?)', req.body.newcat, function (err){
+    if (err){
+      throw err;
+    }
+  }); res.redirect('/jungle/categories');
+});
+
 // display all the topics
+app.get('/jungle/topic/:t_id/posts', function (req, res){
+  db.all("SELECT posts.t_id, posts.post FROM posts WHERE posts.t_id=?",req.params.t_id, function (err, row){
+    if (err){
+      throw err;
+    } else {
+      console.log(row);
+
+      res.render('posts.ejs', {table: row});
+    }
+  });
+});
+
+app.post('/jungle/topic/:t_id/posts', function (req, res){
+  console.log('topic id');
+  console.log(t_id);
+  thisTopic = req.params.t_id;
+  
+  db.run('INSERT INTO posts(t_id, post) VALUES(?,?)',thisTopic, req.body.post, function(err){
+    if (err){
+      throw err;
+    } else {
+    db.run('UPDATE topics SET num_of_posts=num_of_posts+1 WHERE t_id=?', thisTopic, function (err){
+      if (err){
+        throw err;
+      }
+      res.redirect('/jungle/topic/'+thisTopic+'/posts')
+      });
+    }
+  });
+});
+
+// render new post.ejs and call the data from the DB
+app.get('/jungle/topic/:t_id/new/post', function (req, res){
+  console.log('topic id for new post');
+  console.log(req.params.t_id);
+  db.all('SELECT posts.t_id, posts.post, users.username, FROM posts, users WHERE t_id=?',req.params.t_id, function(err, row){
+    if (err) {
+      throw err;
+    } else {
+      res.render('post.ejs', {table: row});
+    }
+  });
+});
+
+app.post('/jungle/topic/:t_id/new/post', function (req, res){
+  db.run('INSERT INTO posts(t_id, post) VALUES(?,?)',req.params.t_id, req.body.post, function(err){
+    if (err){
+      throw err;
+    }
+  });
+});
+
+
+
 app.get('/jungle/:id/topic', function (req, res){
+  console.log('category id');
   console.log(req.params.id);
-  db.all("SELECT topics.t_id, topics.topic FROM topics WHERE topics.cat_id=? ORDER BY topics.vote",req.params.id, function (err, row){
+  id = req.params.id;
+  db.all("SELECT topics.t_id, topics.topic, topics.vote FROM topics WHERE topics.cat_id=?",req.params.id, function (err, row){
     if (err){
       throw err;
     } else {
@@ -101,16 +168,19 @@ app.get('/jungle/:id/topic', function (req, res){
   });
 });
 
-app.get('/jungle/topic/:t_id/posts', function (req, res){
-  db.all("SELECT posts.t_id, posts.post FROM posts WHERE posts.t_id=?",req.params.t_id, function (err, row){
+/// this part is not reached
+// add new topic
+app.post('/jungle/:id/topic', function(req, res){
+  console.log('id is loged');
+  console.log(id);
+
+  db.run('INSERT INTO topics(topic, vote, num_of_posts, cat_id) VALUES(?,?,?)',req.body.topic,0,0,req.params.id, function (err){
     if (err){
       throw err;
-    } else {
-      console.log(row);
-      res.render('posts.ejs', {table: row});
     }
-  });
+  }); res.redirect('/jungle/:id/topic');
 });
+
 
 
 app.listen(3000, function(){

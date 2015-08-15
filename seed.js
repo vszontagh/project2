@@ -10,8 +10,8 @@ db.run('INSERT INTO users(username,password, avatar, admin) VALUES (?,?,?,?)',
   }
 );
 
-db.run('INSERT INTO topics (u_id, topic, vote, cat_id) VALUES (?,?,?,?),(?,?,?,?),(?,?,?,?),(?,?,?,?)', 
-  1,'Forum Policy',0,1,
+db.run('INSERT INTO topics (u_id, topic, vote, num_of_posts, cat_id) VALUES (?,?,?,?,?)', 
+  1,'Forum Policy',0,0,1,
   function (err){
     if (err) {
       throw err;

@@ -10,14 +10,16 @@
 <body>
   <%- include header.ejs %>
     <div>
-    <h1></h1>
-  </div>
+      <h1></h1>
+    </div>
   <div>
-   <form action='/jungle/forum/:id/new/post' method='POST'>
-     <% table.forEach(function(cat) { %>
-        <label for='post' name='post' value='Post:'>
-          <input type='text' id='post' name='post' placeholder='Enter post'>
-        </label><br>
+    <form action='/jungle/forum/:t_id/new/post' method='POST'>
+      <label for='username' name='username' value='Username:'>
+        <input type='text' id='username' name='username' placeholder='Enter username'>
+      </label><br>
+      <label for='post' name='post' value='Post:'>
+        <input type='text' id='post' name='post' placeholder='Enter post'>
+      </label><br>
       <button>Add post</button>
     </form>
   </div>

@@ -13,7 +13,16 @@
   <% table.forEach(function(post) { %>
       <a href=""></a>Post: <%= post.post%></h3></a><br>
     </div>
-    <a href="/jungle/topic/<%=post.t_id%>/posts/new"><button>New Post</button></a>
+    
   <% }) %>
+  <form action='/jungle/topic/:t_id/new/post' method='POST'>
+   <label for='username' name='username' value='Username:'>
+        <input type='text' id='username' name='username' placeholder='Enter username'>
+      </label><br>
+      <label for='post' name='post' value='Post:'>
+        <input type='textarea' id='post' name='post' placeholder='Enter post'>
+      </label><br>
+      <a href="/jungle/topic/:t_id/new/post"></a><button>Add post</button></a>
+  </form>
 </body>
 </html>
