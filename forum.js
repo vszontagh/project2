@@ -112,11 +112,12 @@ app.get('/jungle/topic', function(req, res){
 
 // add new topic
 app.post('/jungle/topic', function(req, res){
-  db.run('INSERT INTO topics(name, vote, num_of_posts) VALUES(?,?,?)', req.body.topic,0,0, function (err){
+  db.run('INSERT INTO topics(topic, vote, num_of_posts) VALUES(?,?,?)', req.body.topic,0,0, function (err){
     if (err){
       throw err;
     }
-  }); res.redirect('/jungle/topics');
+  }); 
+  res.redirect('/jungle/topics');
 });
 
 // display all the topics
@@ -180,7 +181,7 @@ app.get('/jungle/:id/topic', function (req, res){
   });
 });
 
-/// this part is not reached
+/// not redirecting
 // add new topic
 app.post('/jungle/:id/topic', function(req, res){
   console.log('id is loged');
@@ -191,7 +192,8 @@ app.post('/jungle/:id/topic', function(req, res){
     if (err){
       throw err;
     }
-  }); res.redirect('/jungle/'+id+'/topic');
+  }); 
+  res.redirect('/jungle/'+id+'/topic');
 });
 
 
