@@ -5,17 +5,26 @@
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" type="text/css" href="style.css">
+   <link rel="stylesheet" type="text/css" href="http://localhost:3000/style.css">
 </head>
-<body>
-  <%- include header.ejs %>
-  <div>
-    <div>
-      <p>Have you ever wondered that how the other people are always so well informed about the cool events, exhibits in the city and they finding the most awesome places and restorants. blah blah</p>
-    </div>
-    <div>
+<body class='about'>
+  <div class='container'>
+    <header class="pure-g">
+        <div class="pure-u-1-1">
+          <div class="pure-u-1-1 header">
+            <h1 class="forum">Weekend in the Jungle</h1>
+          </div>
+        </div>
+    </header>
+    
+    <div class='pure-u-1-1 intro'>
+      <div calss='pure-u-1-1'>
+        <p>Have you ever wondered why many of your classmates consistently talk about all of the great new events they have done and places they have visited over the weekend during the daily standup yet your weekends consist of of the same old activities each and every time? Well, fear not my friends, this is about to change. This portal will give you the inside scoop on the coolest bars, the hottest exhibits and the trendiest restaurants around.</p>
+      </div>
       <div>
-        <a href="/jungle/login"><button>Login</button></a>
+        <div>
+          <a href="/jungle/login"><button class='button-login pure-button'>Login</button></a>
+        </div>
       </div>
     </div>
   </div>

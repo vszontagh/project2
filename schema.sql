@@ -19,8 +19,8 @@ CREATE TABLE topics(
   vote INTEGER,
   num_of_posts INTEGER,
   cat_id INTEGER,
-  FOREIGN KEY (u_id) REFERENCES users(id),
-  FOREIGN KEY (cat_id) REFERENCES categories(c_id)
+  FOREIGN KEY (cat_id) REFERENCES categories(c_id),
+  FOREIGN KEY (u_id) REFERENCES users(id)
 );
 
 CREATE TABLE categories(
@@ -31,6 +31,7 @@ CREATE TABLE categories(
 CREATE TABLE posts(
   p_id INTEGER PRIMARY KEY AUTOINCREMENT,
   t_id INTEGER,
+  username TEXT,
   post VARCHAR,
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (t_id) REFERENCES topics(t_id)

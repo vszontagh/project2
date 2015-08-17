@@ -7,15 +7,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-  <%- include header.ejs %>
+<body class='display'>
+  <header class="headerLogin">
+    <div class="pure-u-1-1">
+      <div class="pure-u-1-1 header">
+        <h1 class="forum">Weekend in the Jungle</h1>
+      </div>
+    </div>
+
+    <div class="pure-u-1-1">
+      <nav class="pure-u-1-1 pure-menu pure-menu-horizontal">
+        <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href='/jungle/forum' class='pure-menu-link'>Home</a></li>
+          <li class="pure-menu-item"><a href='/jungle/about' class='pure-menu-link'>About</a></li>
+          <li class="pure-menu-item"><a href='/jungle/categories' class='pure-menu-link'>Categories</a></li>
+          <li class="pure-menu-item"><a href='/jungle/forum/topic' class='pure-menu-link'>Topics</a></li>
+          <li class="pure-menu-item"><a href='/jungle/login' class='pure-menu-link'>Login</a></li>
+          <li class="pure-menu-item"><a href='/jungle/contact' class='pure-menu-link'>Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
   <h1></h1>
    <form action='/jungle/new' method='POST'>
       <label>
         <input type='textarea' name='post' placeholder='Enter post'>
       </label>
 
-      <button>Join</button>
+      <button class='pure-button'>Join</button>
     </form><hr>
 </body>
 </html>
