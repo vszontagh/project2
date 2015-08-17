@@ -182,7 +182,7 @@ app.get('/jungle/:id/topic', function (req, res){
 });
 
 /// not redirecting
-// add new topic
+// add new topic to category
 app.post('/jungle/:id/topic', function(req, res){
   console.log('id is loged');
   console.log(req.params.id);

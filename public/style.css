@@ -129,7 +129,8 @@ a#menu{
 a#menu:hover{
   color: #751975;
 }
-a:visited{
+
+a,a:visited{
   color: #142952;
 }
 a:hover{

@@ -37,7 +37,7 @@
           <p>Comments: <%=top.num_of_posts%></p>
         </div>
       <% }) %>
-       <form class='pure-form' action='/jungle/topic' method='POST'>
+       <form class='pure-form' action='/jungle/<%=id%>/topic' method='POST'>
           <label for='topic' name='topic' value='New Topic:'>
           <input type='text' id='topic' name='topic' placeholder='Enter new topic'></label><br>
           <button class='pure-button'>Add Topic</button>
