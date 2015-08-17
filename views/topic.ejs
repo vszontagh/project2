@@ -34,6 +34,7 @@
         <div class="pure-u-1-1 topics">
           <a href="/jungle/topic/<%=top.t_id%>/posts"><h3><%= top.topic%></h3></a>
           <p>Likes: <%=top.vote%></p>
+          <p>Comments: <%=top.num_of_posts%></p>
         </div>
       <% }) %>
        <form class='pure-form' action='/jungle/topic' method='POST'>
