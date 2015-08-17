@@ -65,7 +65,9 @@ h1{
   margin: 0 10px;
 
 }
-
+p{
+  font-size: .8em;
+}
 .about{
   background-image: url('nyc.jpg');
   background-repeat: no-repeat;
@@ -93,7 +95,7 @@ input{
 }
 .pure-button{
   color: white;
-  width: 130px;
+  width: 140px;
   border: 1px groove ;
   border-radius: 10px;
   background-color: rgba(0,41,82,.8);
@@ -128,7 +130,7 @@ a#menu:hover{
   color: #751975;
 }
 a:visited{
-  color: blue;
+  color: #142952;
 }
 a:hover{
   color: #751975;

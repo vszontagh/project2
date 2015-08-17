@@ -42,7 +42,7 @@ app.post('/jungle/login', function (req, res){
   });
 });
 
-// app.get('/jungle/forum', function (req, res){
+// app.get('/jungle/home', function (req, res){
 //   //console.log('im in')
 //   db.all("SELECT categories.name FROM categories, topics ORDER BY topics.vote DESC", function (err, row){
 //     // console.log(row);
@@ -54,7 +54,7 @@ app.post('/jungle/login', function (req, res){
 //       res.render('index.ejs', {table: row}); // table is the temporary storage of the new joined table
 //     }
 //   });
-//     db.all("SELECT topics.topic FROM topics ORDER BY topics.vote DESC", function (err, row){
+//     db.all("SELECT topics.topic, topics.cat_id FROM topics ORDER BY topics.vote DESC", function (err, row){
 //     // console.log(row);
 //     //  console.log(name);
 //     if (err){
@@ -66,7 +66,7 @@ app.post('/jungle/login', function (req, res){
 //   });
 // });
 
-// app.post('/jungle/forum', function (req, res){
+// app.post('/jungle/home', function (req, res){
 //   db.all("SELECT * FROM categories INNER JOIN topics ON topics.cat_id=categories.c_id ORDER BY topics.vote DESC", function (err, row){
 //     if (err){
 //       throw err;
@@ -100,7 +100,7 @@ app.post('/jungle/categories', function(req, res){
 
 /// display all the topics
 app.get('/jungle/topic', function(req, res){
-   db.all("SELECT * FROM topics", function (err, row){
+   db.all("SELECT * FROM topics ORDER BY vote DESC", function (err, row){
     if (err){
       throw err;
     } else {
@@ -123,7 +123,7 @@ app.post('/jungle/topic', function(req, res){
 app.get('/jungle/topic/:t_id/posts', function (req, res){
   t_id=req.params.t_id;
   console.log(t_id);
-  db.all("SELECT posts.t_id, posts.post, posts.username FROM posts WHERE posts.t_id=?" ,req.params.t_id, function (err, row){
+  db.all("SELECT posts.t_id, posts.post, posts.username , posts.created_at FROM posts WHERE posts.t_id=?" ,req.params.t_id, function (err, row){
     if (err){
       throw err;
     } else {
@@ -142,21 +142,27 @@ app.post('/jungle/topic/:t_id/posts', function (req, res){
   db.run('INSERT INTO posts(t_id, username, post) VALUES(?,?,?)',thisTopic, req.body.username, req.body.post, function(err){
     if (err){
       throw err;
-    } else {
-    db.run('UPDATE topics SET num_of_posts=num_of_posts+1 WHERE t_id=?', thisTopic, function (err){ // this is not working
+    } 
+      res.redirect('/jungle/topic/'+thisTopic+'/posts');
+    
+  });
+});
+
+app.put('/jungle/topic/:t_id/posts', function (req, res){
+  thisTopic = req.params.t_id;
+  console.log(thisTopic);
+      db.run('UPDATE topics SET vote=vote+1 WHERE t_id=?', req.params.t_id, function (err){ // this is not working
       if (err){
         throw err;
-      } 
-     //  else{
-     //    db.run('UPDATE topics SET vote=vote+1 WHERE t_id=?', thisTopic, function (err){ // this is not working
-     //  if (err){
-     //    throw err;
-     //  }
-     // }
-      res.redirect('/jungle/topic/'+thisTopic+'/posts');
+      } else {
+      db.run('UPDATE topics SET num_of_posts=num_of_posts+1 WHERE t_id=?', thisTopic, function (err){ // this is not working
+        if (err){
+          throw err;
+        } 
       });
-    }
-  });
+      res.redirect('/jungle/topic/'+req.params.t_id+'/posts');
+      }
+    });
 });
 
 app.get('/jungle/:id/topic', function (req, res){

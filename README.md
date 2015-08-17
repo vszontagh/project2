@@ -1,5 +1,5 @@
 project2 :octocat: :thought_balloon:
-#Study Buddy FORUM
+#Weekend in the Jungle FORUM
 
 
 ##USER STORIES
