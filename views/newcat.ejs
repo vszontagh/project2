@@ -8,7 +8,7 @@
    <link rel="stylesheet" type="text/css" href="http://localhost:3000/style.css">
 </head>
 <body class='display'>
- <header class="headerLogin">
+ <header class="unifyHeader">
     <div class="pure-u-1-1">
       <div class="pure-u-1-1 header">
         <h1 class="forum">Weekend in the Jungle</h1>
@@ -28,15 +28,17 @@
       </nav>
     </div>
   </header>
-  <div>
-    <h1></h1>
-  </div>
-  <div>
-   <form class='pure-form' action='/jungle/forum/new/category' method='POST'>
-      <label for='newcat' name='newcat' value='New Category:'>
-      <input type='text' id='newcat' name='newcat' placeholder='Enter new category'></label><br>
-      <button class='pure-button'>Add Category</button>
-    </form>
+  <div class='unifyContent'>
+    <div>
+      <h1>New Category</h1>
+    </div>
+    <div>
+     <form class='pure-form' action='/jungle/forum/new/category' method='POST'>
+        <label for='newcat' name='newcat' value='New Category:'>
+        <input type='text' id='newcat' name='newcat' placeholder='Enter new category'></label><br>
+        <button class='pure-button'>Add Category</button>
+      </form>
+    </div>
   </div>
 </body>
 </html>

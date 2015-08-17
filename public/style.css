@@ -35,6 +35,15 @@
   max-width: 60px;
   max-height: 60px;
 }
+.vote{
+  background-image: url('like.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 25px;
+  width: 25px;
+ /* border: 2px groove;
+  border-radius: 3px;*/
+}
 .header{
   background: #;
   

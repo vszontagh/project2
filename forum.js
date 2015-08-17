@@ -146,7 +146,13 @@ app.post('/jungle/topic/:t_id/posts', function (req, res){
     db.run('UPDATE topics SET num_of_posts=num_of_posts+1 WHERE t_id=?', thisTopic, function (err){ // this is not working
       if (err){
         throw err;
-      }
+      } 
+      //else{
+      //   db.run('UPDATE topics SET vote=vote+1 WHERE t_id=?', thisTopic, function (err){ // this is not working
+      // if (err){
+      //   throw err;
+      // }
+     // }
       res.redirect('/jungle/topic/'+thisTopic+'/posts');
       });
     }

@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="http://localhost:3000/style.css">
 </head>
 <body class='display'>
-  <header class="headerLogin">
+  <header class="unifyHeader">
     <div class="pure-u-1-1">
       <div class="pure-u-1-1 header">
         <h1 class="forum">Weekend in the Jungle</h1>
@@ -28,20 +28,21 @@
       </nav>
     </div>
   </header>
+  <div class='unifyContent'>
     <div>
       <h1></h1>
     </div>
-  <div>
-    <form class='pure-form' action='/jungle/forum/:t_id/new/post' method='POST'>
-      <label for='username' name='username' value='Username:'>
-        <input type='text' id='username' name='username' placeholder='Enter username'>
-      </label><br>
-      <label for='post' name='post' value='Post:'>
-        <input type='text' id='post' name='post' placeholder='Enter post'>
-      </label><br>
-      <button class='pure-button'>Add post</button>
-    </form>
+    <div>
+      <form class='pure-form' action='/jungle/forum/:t_id/new/post' method='POST'>
+        <label for='username' name='username' value='Username:'>
+          <input type='text' id='username' name='username' placeholder='Enter username'>
+        </label><br>
+        <label for='post' name='post' value='Post:'>
+          <input type='text' id='post' name='post' placeholder='Enter post'>
+        </label><br>
+        <button class='pure-button'>Add post</button>
+      </form>
+    </div>
   </div>
-
 </body>
 </html>

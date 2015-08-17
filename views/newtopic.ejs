@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="http://localhost:3000/style.css">
 </head>
 <body class='display'>
-  <header class="headerLogin">
+  <header class="unifyHeader">
     <div class="pure-u-1-1">
       <div class="pure-u-1-1 header">
         <h1 class="forum">Weekend in the Jungle</h1>
@@ -28,26 +28,27 @@
       </nav>
     </div>
   </header>
+  <div class='unifyContent'>
     <div>
-    <h1></h1>
-  </div>
-  <div>
-   <form class='pure-form' action='/jungle/forum/:id/new/topic' method='POST'>
-      <label for='topic' name='topic' value='Topic:'>
-        <input type='text' id='topic' name='topic' placeholder='Enter topic'>
-      </label><br>
-      <select>
-        <% table.forEach(function(cat) { %>
-        <option name="<%=cat.c_id%>" value="<%=cat.c_id%>"><%=cat.name%></option>
-        <% }) %>
-      </select>
+      <h1>New Post</h1>
+    </div>
+    <div>
+     <form class='pure-form' action='/jungle/forum/:id/new/topic' method='POST'>
+        <label for='topic' name='topic' value='Topic:'>
+          <input type='text' id='topic' name='topic' placeholder='Enter topic'>
+        </label><br>
+        <select>
+          <% table.forEach(function(cat) { %>
+          <option name="<%=cat.c_id%>" value="<%=cat.c_id%>"><%=cat.name%></option>
+          <% }) %>
+        </select>
 
-      <p><%= table.c_id%></p>
-      <input type='hidden' name='catid' value='<%=table.c_id%>'><br>
-      
-      <button class='pure-button'>Add post</button>
-    </form>
+        <p><%= table.c_id%></p>
+        <input type='hidden' name='catid' value='<%=table.c_id%>'><br>
+        
+        <button class='pure-button'>Add post</button>
+      </form>
+    </div>
   </div>
-
 </body>
 </html>
