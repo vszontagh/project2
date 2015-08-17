@@ -123,7 +123,7 @@ app.post('/jungle/topic', function(req, res){
 app.get('/jungle/topic/:t_id/posts', function (req, res){
   t_id=req.params.t_id;
   console.log(t_id);
-  db.all("SELECT posts.t_id, posts.post FROM posts WHERE posts.t_id=?",req.params.t_id, function (err, row){
+  db.all("SELECT DISTINCT posts.t_id, posts.post, posts.username, users.avatar, users.username FROM posts, users, topics WHERE posts.t_id=?" ,req.params.t_id, function (err, row){
     if (err){
       throw err;
     } else {
@@ -147,11 +147,11 @@ app.post('/jungle/topic/:t_id/posts', function (req, res){
       if (err){
         throw err;
       } 
-      //else{
-      //   db.run('UPDATE topics SET vote=vote+1 WHERE t_id=?', thisTopic, function (err){ // this is not working
-      // if (err){
-      //   throw err;
-      // }
+     //  else{
+     //    db.run('UPDATE topics SET vote=vote+1 WHERE t_id=?', thisTopic, function (err){ // this is not working
+     //  if (err){
+     //    throw err;
+     //  }
      // }
       res.redirect('/jungle/topic/'+thisTopic+'/posts');
       });

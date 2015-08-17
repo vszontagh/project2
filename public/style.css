@@ -1,34 +1,51 @@
 /* Specifying alternate font file formats for broader browser support, embedded from file */
 @import url(http://fonts.googleapis.com/css?family=Cabin);
+@import url(http://fonts.googleapis.com/css?family=Audiowide);
 * {
   box-sizing: border-box; /* the value border-box forces the padding and bording into the width&height of the element*/
 }
 
-
+html{
+  font-family: 'Audiowide', cursive;
+}
 .container{
-  margin: 20%;
+  margin: 8% 20%;
   width: 80%;
+  vertical-align: center;
 }
 .pure-g {
   text-align: center;
   vertical-align: center;
-  
   width: 80%;
  }
-
+h1{
+  color: white;
+  visibility: hidden;
+  font-family: 'Audiowide', cursive;
+  font-size: 2.5em;
+}
 .unifyHeader {
-  background-color: #142952;
+  background-image: url('header2.png');
+  background-repeat: no-repeat;
+  background-size: 100% 80%;
+  /*background-color: rgba(71,78,90,.6);*/
   width: 100%;
+  height: 130px;
+  text-align: center;;
 
 }
 .unifyContent{
-  margin: 6% 10%;
-
+  margin: 6% 20%;
+  padding: 5px;
 }
 .comments{
   padding: 10px;
   border: 4px groove transparent;
   border-radius: 4px;
+  background-color: rgba(0,41,82,.4);
+  width: 100%;
+  margin: 5px 0;
+  color: white;
 }
 
 .avatar{
@@ -39,15 +56,15 @@
   background-image: url('like.png');
   background-repeat: no-repeat;
   background-size: cover;
-  height: 25px;
-  width: 25px;
- /* border: 2px groove;
-  border-radius: 3px;*/
+  background-color: #142952;
+  height: 20px;
+  width: 20px;
+  border: 2px groove;
+  border-radius: 3px;
+  border-style: hidden;
+  margin: 0 10px;
 }
-.header{
-  background: #;
-  
-}
+
 .about{
   background-image: url('nyc.jpg');
   background-repeat: no-repeat;
@@ -59,7 +76,7 @@
   text-align: center;
   vertical-align: center;
   width: 80%;
-  font-size: 1.5em;
+  font-size: 1.2em;
   background-color: rgba(71,78,90,.6);
   border-radius: 20px;
   height: auto;
@@ -86,10 +103,10 @@ input{
   background-color: rgba(0,23,46,.8);
 }
 .pure-menu{
-  margin: 3% 5%;
+  /*margin: 3% 5%;*/
   text-align: center;
   color: white;
-  background-color: ;
+  background-color: #2C2D2D;
 }
 .pure-menu-list{
   color: white;
@@ -99,11 +116,40 @@ input{
 }
 textarea#post{
   width: 40%;
-
   border: 3px groove;
   padding: 5px;
   font-family: ;
+}
+a#menu{
+  color: white;
+}
+a#menu:hover{
+  color: #751975;
+}
+a:visited{
+  color: blue;
+}
+a:hover{
+  color: #751975;
+}
+#nav{
+  color: white;
 
+}
+h2, nav{
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+img#avatarimg{
+  width: 100px;
+  height: 100px;
+  border: 4px groove transparent;
+  border-radius: 4px;
+}
+
+#forum{
+  color: white;
+  visibility: visible;
 }
 @media (max-width: 500px) {
 
@@ -132,8 +178,51 @@ textarea#post{
   border: 1px groove ;
   border-radius: 10px;
   background-color: rgba(0,41,82,.8);
-  margin: 5px;
+  margin: 2px;
+
 }
 .pure-button:hover{
   background-color: rgba(0,23,46,.8);
+}
+.unifyHeader {
+  background-image: url('header2.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  /*background-color: rgba(71,78,90,.6);*/
+  width: 100%;
+  height: 100px;
+  text-align: center;
+  font-family: ;
+
+}
+.unifyContent{
+  margin: 10% 3%;
+  padding: 5px;
+}
+.comments{
+  padding: 5px;
+  border: 4px groove transparent;
+  border-radius: 4px;
+  background-color: rgba(0,41,82,.4);
+  width: 100%;
+  margin: 5px 0;
+  color: white;
+  font-size: .6em;
+}
+img#avatarimg{
+  width: 60px;
+  height: 60px;
+  border: 4px groove transparent;
+  border-radius: 4px;
+  vertical-align: top;
+}
+a#menu{
+  color: white;
+  font-size: .8em;
+}
+h1{
+  color: white;
+  visibility: hidden;
+  font-family: 'Audiowide', cursive;
+  font-size: 1.5em;
 }

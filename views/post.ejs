@@ -16,21 +16,20 @@
     </div>
 
     <div class="pure-u-1-1">
-      <nav class="pure-u-1-1 pure-menu pure-menu-horizontal">
+      <nav id='nav' class="pure-u-1-1 pure-menu pure-menu-horizontal">
         <ul class="pure-menu-list">
-          <li class="pure-menu-item"><a href='/jungle/forum' class='pure-menu-link'>Home</a></li>
-          <li class="pure-menu-item"><a href='/jungle/about' class='pure-menu-link'>About</a></li>
-          <li class="pure-menu-item"><a href='/jungle/categories' class='pure-menu-link'>Categories</a></li>
-          <li class="pure-menu-item"><a href='/jungle/forum/topic' class='pure-menu-link'>Topics</a></li>
-          <li class="pure-menu-item"><a href='/jungle/login' class='pure-menu-link'>Login</a></li>
-          <li class="pure-menu-item"><a href='/jungle/contact' class='pure-menu-link'>Contact</a></li>
+          <li class="pure-menu-item"><a href='/jungle/forum' id='menu' class='pure-menu-link'>Home</a></li>
+          <li class="pure-menu-item"><a href='/jungle/about' id='menu' class='pure-menu-link'>About</a></li>
+          <li class="pure-menu-item"><a href='/jungle/categories' id='menu' class='pure-menu-link'>Categories</a></li>
+          <li class="pure-menu-item"><a href='/jungle/topic' id='menu' class='pure-menu-link'>Topics</a></li>
+          <li class="pure-menu-item"><a href='/jungle/login' id='menu' class='pure-menu-link'>Login</a></li>
         </ul>
       </nav>
     </div>
   </header>
   <div class='unifyContent'>
     <div>
-      <h1></h1>
+      <h1>Add new post</h1>
     </div>
     <div>
       <form class='pure-form' action='/jungle/forum/:t_id/new/post' method='POST'>

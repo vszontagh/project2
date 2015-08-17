@@ -8,32 +8,38 @@
    <link rel="stylesheet" type="text/css" href="http://localhost:3000/style.css">
 </head>
 <body class='display'>
-  <header class="pure-g unifyHeader">
+  <header class="unifyHeader">
     <div class="pure-u-1-1">
       <div class="pure-u-1-1 header">
-        <h1 class="forum">Weekend in the Jungle</h1>
+        <h1 class="title">Weekend in the Jungle</h1>
       </div>
     </div>
 
     <div class="pure-u-1-1">
-      <nav class="pure-u-1-1 pure-menu pure-menu-horizontal">
-        <ul class="pure-menu-list">
-          <li class="pure-menu-item"><a href='/jungle/forum' class='pure-menu-link'>Home</a></li>
-          <li class="pure-menu-item"><a href='/jungle/about' class='pure-menu-link'>About</a></li>
-          <li class="pure-menu-item"><a href='/jungle/categories' class='pure-menu-link'>Categories</a></li>
-          <li class="pure-menu-item"><a href='/jungle/forum/topic' class='pure-menu-link'>Topics</a></li>
-          <li class="pure-menu-item"><a href='/jungle/login' class='pure-menu-link'>Login</a></li>
-          <li class="pure-menu-item"><a href='/jungle/contact' class='pure-menu-link'>Contact</a></li>
+      <nav id='nav' class="pure-u-1-1 pure-menu pure-menu-horizontal">
+         <ul class="pure-menu-list">
+          <li class="pure-menu-item"><a href='/jungle/forum' id='menu' class='pure-menu-link'>Home</a></li>
+          <li class="pure-menu-item"><a href='/jungle/about' id='menu' class='pure-menu-link'>About</a></li>
+          <li class="pure-menu-item"><a href='/jungle/categories' id='menu' class='pure-menu-link'>Categories</a></li>
+          <li class="pure-menu-item"><a href='/jungle/topic' id='menu' class='pure-menu-link'>Topics</a></li>
+          <li class="pure-menu-item"><a href='/jungle/login' id='menu' class='pure-menu-link'>Login</a></li>
         </ul>
       </nav>
     </div>
   </header>
     <div class='unifyContent'>
+      <h2>Topics</h2>
+        <hr>
       <% table.forEach(function(top) { %>
         <div class="pure-u-1-1 topics">
           <a href="/jungle/topic/<%=top.t_id%>/posts"><h3><%= top.topic%></h3></a><br>
         </div>
       <% }) %>
+       <form class='pure-form' action='/jungle/topic' method='POST'>
+          <label for='topic' name='topic' value='New Topic:'>
+          <input type='text' id='topic' name='topic' placeholder='Enter new topic'></label><br>
+          <button class='pure-button'>Add Topic</button>
+      </form>
   </div>
 </body>
 </html>
