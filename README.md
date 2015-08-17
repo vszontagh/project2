@@ -3,11 +3,10 @@ project2 :octocat: :thought_balloon:
 
 
 ##USER STORIES
-* User can see all topics and discussions by topics
+* User can see all categories,topics and posts
 * User can create user profile
+* User can create new category
 * User can create topics
-* User can assign category to new topics ???
-* User can see a summary of the top 5 most visited/ commented topics
 * User can add comment on existing and new topics
 * User can vote on topics
 * User should see the most popular topic first
@@ -22,30 +21,24 @@ project2 :octocat: :thought_balloon:
 
 ##FRONT-END WIREFRAMES
 **Web page layout**
-![web](image/web.png)
+![web](image/web1.png)
+![web](image/web2.png)
+![web](image/web3.png)
 
 **Mobile Layout**
-![mobile](image/mobile.png)
-
+![mobile](image/mobile1.png)
+![mobile](image/mobile2.png)
 
 ##PSEUDOCODE :bar_chart:
 ![pseudo](image/code.png)
 
 ##ROUTES
-
-*/forum
-
-*/forum
-
-*/forum/:id
-
-*/forum/:id/delete
+![pseudo](image/routes.png)
 
 
 ##ERD DATABASE DESIGN
 ###Database Design
 ![ERD](image/erd.png)
-
 
 
 ##TECHNOLOGIES USED
@@ -54,6 +47,10 @@ project2 :octocat: :thought_balloon:
 :smiley:HTML
 :smiley:CSS
 :smiley:Express
+
+##AGILE
+**KANBAN**
+![KANBAN](image/kanban.png)
 
 ## DIGITAL OCEAN
 [DO :droplet:](http://github.com)
